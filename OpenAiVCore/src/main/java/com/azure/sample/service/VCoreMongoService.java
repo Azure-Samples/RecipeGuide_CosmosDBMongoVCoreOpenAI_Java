@@ -2,14 +2,18 @@ package com.azure.sample.service;
 
 import com.azure.sample.Utility;
 import com.azure.sample.model.Recipe;
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoException;
 import com.mongodb.client.*;
 import com.mongodb.client.model.ReplaceOptions;
+import com.mongodb.client.result.UpdateResult;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.BsonDocument;
+import org.bson.BsonString;
 import org.bson.BsonType;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,7 @@ public class VCoreMongoService {
 //                .append("offerThroughput", 400);
 //
 //        Document commandResult = database.runCommand(doc);
-        recipeCollection.deleteMany(new BsonDocument());
+//        recipeCollection.deleteMany(new BsonDocument());
     }
 
     public List<Recipe> getRecipesToVectorize() {
@@ -171,14 +175,14 @@ public class VCoreMongoService {
             log.warn("UpsertVectorAsync: Document does not contain _id.");
         }
 
-        String idValue = document.get("_id").toString();
+        String idValue = document.get("_id").asString().getValue();
 
         try {
-            var filter = eq("_id", idValue);
+//            var filter = eq("_id", idValue);
             var options = new ReplaceOptions();
             options.upsert(true);
             document.remove("_id");
-            recipeCollection.replaceOne(filter, document, options);
+            UpdateResult updateResult = recipeCollection.replaceOne(new BasicDBObject("_id", idValue), document, options);
 
         } catch (Exception ex) {
             log.warn("Exception: UpsertVectorAsync(): ", ex.getMessage());

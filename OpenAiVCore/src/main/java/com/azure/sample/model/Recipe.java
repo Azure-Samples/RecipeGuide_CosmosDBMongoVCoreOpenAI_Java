@@ -29,13 +29,13 @@ public class Recipe {
     public BsonDocument toBsonDocument() {
         BsonDocument document = new BsonDocument();
         document.put("_id", new BsonString(id));
-        document.put("_name", new BsonString(name));
-        document.put("_description", new BsonString(description));
-        document.put("_cuisine", new BsonString(cuisine));
-        document.put("_difficulty", new BsonString(difficulty));
-        document.put("_prepTime", new BsonString(prepTime));
-        document.put("_cookTime", new BsonString(cookTime));
-        document.put("_totalTime", new BsonString(totalTime));
+        document.put("name", new BsonString(name));
+        document.put("description", new BsonString(description));
+        document.put("cuisine", new BsonString(cuisine));
+        document.put("difficulty", new BsonString(difficulty));
+        document.put("prepTime", new BsonString(prepTime));
+        document.put("cookTime", new BsonString(cookTime));
+        document.put("totalTime", new BsonString(totalTime));
         return document;
     }
 
