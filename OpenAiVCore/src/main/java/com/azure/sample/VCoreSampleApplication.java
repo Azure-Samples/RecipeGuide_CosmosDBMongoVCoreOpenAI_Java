@@ -30,16 +30,16 @@ public class VCoreSampleApplication {
             String selectedOption = scanner.nextLine();
 
             switch (selectedOption) {
-                case "1":   //cosmosUpload
+                case "1":
                     uploadRecipes();
                     break;
-                case "2":   //vectorize
+                case "2":
                     generateEmbeddings();
                     break;
-                case "3":   //search
+                case "3":
                     performSearch();
                     break;
-                case "4":   //exit
+                case "4":
                     return;
             }
         }
@@ -64,8 +64,7 @@ public class VCoreSampleApplication {
             recipeWithEmbedding = cosmosMongoVCoreService.getRecipeCount(true);
             recipeWithNoEmbedding = cosmosMongoVCoreService.getRecipeCount(false);
         }
-        var res = String.format("We have %s vectorized recipe(s) and %s non vectorized recipe(s).",
-                recipeWithEmbedding, recipeWithNoEmbedding);
+        var res = String.format("We have %s vectorized recipe(s) and %s non vectorized recipe(s).", recipeWithEmbedding, recipeWithNoEmbedding);
         log.info(res);
     }
 
@@ -101,8 +100,7 @@ public class VCoreSampleApplication {
         recipeWithEmbedding = cosmosMongoVCoreService.getRecipeCount(true);
         recipeWithNoEmbedding = cosmosMongoVCoreService.getRecipeCount(false);
 
-        var res = String.format("We have %s vectorized recipe(s) and %s non vectorized recipe(s).",
-                recipeWithEmbedding, recipeWithNoEmbedding);
+        var res = String.format("We have %s vectorized recipe(s) and %s non vectorized recipe(s).", recipeWithEmbedding, recipeWithNoEmbedding);
         log.info(res);
     }
 
@@ -197,8 +195,7 @@ public class VCoreSampleApplication {
         recipeWithEmbedding = cosmosMongoVCoreService.getRecipeCount(true);
         recipeWithNoEmbedding = cosmosMongoVCoreService.getRecipeCount(false);
 
-        var res = String.format("Vectorized %s recipe(s). We have %s vectorized recipe(s) and %s non vectorized recipe(s).",
-                recipeCount, recipeWithEmbedding, recipeWithNoEmbedding);
+        var res = String.format("Vectorized %s recipe(s). We have %s vectorized recipe(s) and %s non vectorized recipe(s).", recipeCount, recipeWithEmbedding, recipeWithNoEmbedding);
         log.info(res);
     }
 }
