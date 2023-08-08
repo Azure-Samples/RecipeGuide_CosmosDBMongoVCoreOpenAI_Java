@@ -83,7 +83,7 @@ public class OpenAIService {
             chatCompletionsOptions.setPresencePenalty(0d);
 
             Mono<ChatCompletions> completionsResponse =
-                    openAIAsyncClient.getChatCompletions("", chatCompletionsOptions);
+                    openAIAsyncClient.getChatCompletions(AppConfig.openAICompletionsDeployment, chatCompletionsOptions);
             ChatCompletions completions = completionsResponse
                     .toFuture().get();
 
@@ -94,7 +94,7 @@ public class OpenAIService {
 
             return responseData;
         } catch (Exception ex) {
-            log.warn("Error OpenAIService.GetChatCompletionAsync() " + ex.getMessage());
+            log.warn("Error OpenAIService GetChatCompletionAsync", ex);
         }
         return null;
     }

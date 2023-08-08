@@ -37,7 +37,7 @@ public class VCoreSampleApplication {
                     generateEmbeddings();
                     break;
                 case "3":
-                    performSearch();
+                    performSearch(scanner);
                     break;
                 case "4":
                     return;
@@ -105,14 +105,11 @@ public class VCoreSampleApplication {
     }
 
 
-    private static void performSearch() {
+    private static void performSearch(Scanner scanner) {
         String chatCompletion = "";
-        Scanner scanner = new Scanner(System.in);
 
         log.info("Type the recipe name or your question, hit enter when ready.");
-        String userQuery = "baklava";
-
-        scanner.close();
+        String userQuery = scanner.nextLine();
 
         log.info("Processing...");
 
