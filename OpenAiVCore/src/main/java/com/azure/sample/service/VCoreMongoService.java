@@ -110,7 +110,7 @@ public class VCoreMongoService {
                 if (!vectorIndexExists) {
                     Bson bsonCommand = BsonDocument.parse(
                             """
-                                    { createIndexes: 'Recipe',
+                                    { createIndexes: 'recipes',
                                       indexes: [{
                                         name: 'vectorSearchIndex',
                                         key: { embedding: \"cosmosSearch\" },
@@ -140,7 +140,6 @@ public class VCoreMongoService {
             //Project the fields that are needed
             String joined = queryVector.stream().map(String::valueOf)
                     .collect(Collectors.joining(","));
-//            joined = "'" + joined + "'";
             String formatted = String.format("{$search: {cosmosSearch: { vector: [%s], " +
                     "path: 'embedding', k: %d}, returnStoredSource:true}}", joined, maxVectorSearchResults);
 
