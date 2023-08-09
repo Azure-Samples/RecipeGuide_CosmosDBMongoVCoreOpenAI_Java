@@ -83,7 +83,7 @@ public class VCoreSampleApplication {
 
 
     private static void uploadRecipes() {
-        String folderPath = "C:\\Users\\v-dchaava\\IdeaProjects\\spring-cloud-azure-vcore-newsample\\recipes";
+        String folderPath = AppConfig.recipeLocalFolder;
         long recipeWithEmbedding = 0;
         long recipeWithNoEmbedding = 0;
 

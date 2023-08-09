@@ -94,7 +94,7 @@ public class OpenAIService {
 
             return responseData;
         } catch (Exception ex) {
-            log.warn("Error OpenAIService GetChatCompletionAsync", ex);
+            log.warn("Error OpenAIService GetChatCompletion", ex);
         }
         return null;
     }

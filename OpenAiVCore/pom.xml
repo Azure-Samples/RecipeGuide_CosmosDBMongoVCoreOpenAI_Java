@@ -58,7 +58,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>com.azure.recipe.Main</mainClass>
+                    <mainClass>com.azure.sample.VCoreSampleApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>

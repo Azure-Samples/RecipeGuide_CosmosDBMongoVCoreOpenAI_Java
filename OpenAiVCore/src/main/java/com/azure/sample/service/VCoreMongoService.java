@@ -177,14 +177,13 @@ public class VCoreMongoService {
         String idValue = document.get("_id").asString().getValue();
 
         try {
-//            var filter = eq("_id", idValue);
             var options = new ReplaceOptions();
             options.upsert(true);
             document.remove("_id");
             UpdateResult updateResult = recipeCollection.replaceOne(new BasicDBObject("_id", idValue), document, options);
 
         } catch (Exception ex) {
-            log.warn("Exception: UpsertVectorAsync(): ", ex.getMessage());
+            log.warn("Exception: UpsertVectorAsync(): ", ex);
         }
 
     }
